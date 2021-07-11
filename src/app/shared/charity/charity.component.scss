@@ -1,0 +1,21 @@
+host {
+  width: 250px;
+  height: 360px;
+  display: block;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.charity-container {
+  width: 250px;
+  height: 360px;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+}
+.card-text {
+  max-height: 72px;
+  overflow-y: auto;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

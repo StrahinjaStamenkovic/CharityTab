@@ -1,0 +1,137 @@
+<div class="container-fluid">
+  <header class="header">
+    <nav class="navbar fixed-top navbar-dark shadow-5-strong px-0">
+      <!-- Container wrapper -->
+      <div class="container-fluid px-0 flex-nowrap">
+        <ul class="mb-2 mb-lg-0 nav nav-tabs align-items-center flex-nowrap">
+          <li class="nav-item">
+            <span data-target="#bookmarks" data-toggle="tab"
+              ><button><fa-icon [icon]="faBookmark"></fa-icon></button
+            ></span>
+          </li>
+          <li class="nav-item">
+            <span data-target="#notes" data-toggle="tab"
+              ><button><fa-icon [icon]="faStickyNote"></fa-icon></button
+            ></span>
+          </li>
+          <li class="nav-item">
+            <span data-target="#toDo" data-toggle="tab" class="active"
+              ><button><fa-icon [icon]="faListUl"></fa-icon></button
+            ></span>
+          </li>
+          <div
+            class="
+              d-flex
+              search
+              align-items-center
+              justify-content-start
+              ml-3
+              search
+            "
+          >
+            <span class="mr-2 searchIcon"
+              ><fa-icon [icon]="faSearch"></fa-icon
+            ></span>
+
+            <div class="search-container">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Type text to search..."
+              />
+              <span class="search-input-border"></span>
+            </div>
+          </div>
+        </ul>
+        <!-- Left links -->
+
+        <!-- Right Links-->
+        <ul
+          class="
+            mb-2 mb-lg-0
+            ml-auto
+            nav nav-tabs
+            align-items-center
+            flex-nowrap
+          "
+        >
+          <li class="dropdown">
+            <h3 class="nav-link text-nowrap" data-toggle="dropdown">
+              {{ money }}
+            </h3>
+            <div class="dropdown-menu dropdown-menu-right px-2">
+              <p class="my-0">
+                This is how much money our community has raised for charity.
+              </p>
+            </div>
+          </li>
+
+          <li class="">
+            <h3 class="font-weight-bold mb-0">·</h3>
+          </li>
+
+          <li class="dropdown">
+            <h3 class="nav-link text-nowrap" data-toggle="dropdown">
+              {{ hearts }} <fa-icon [icon]="faHeart"></fa-icon>
+            </h3>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div
+                class="
+                  d-flex
+                  flex-column
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <h3 class="mb-0 mt-1">
+                  {{ hearts }} <fa-icon [icon]="faHeart"></fa-icon>
+                </h3>
+                <p class="my-0">donated</p>
+                <button
+                  class="btn btn-primary text-nowrap mx-2 mb-3 mt-1"
+                  (click)="redirectDonate()"
+                >
+                  DONATE HEARTS
+                </button>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="d-flex justify-content-between px-3">
+                <p class="text-center mb-0" style="font-size: 0.875rem">
+                  Open a new tab
+                </p>
+                <p class="text-center mb-0" style="font-size: 0.875rem">
+                  1<fa-icon
+                    [icon]="faHeart"
+                    style="font-size: 0.875rem"
+                  ></fa-icon>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <h3 class="nav-link" data-toggle="dropdown">
+              <fa-icon [icon]="faSettings"></fa-icon>
+            </h3>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" [routerLink]="['/profile/settings']"
+                >Settings</a
+              >
+              <a class="dropdown-item" [routerLink]="['/profile/donate']"
+                >Donate Hearts</a
+              >
+              <a class="dropdown-item" [routerLink]="['/profile/stats']"
+                >Your stats</a
+              >
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/auth/logout']"
+                >Sign Out</a
+              >
+            </div>
+          </li>
+        </ul>
+        <!-- Right Links-->
+      </div>
+    </nav>
+    <!-- Navbar -->
+  </header>
+</div>

@@ -1,0 +1,48 @@
+{
+    "users": [],
+    "charities": [
+        {
+            "name": "Action Against Hunger",
+            "description": "A global humanitarian organization committed to ending world hunger",
+            "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/acfusa-201804.png",
+            "link": "https://www.actionagainsthunger.org/",
+            "totalHeartsDonated": 0,
+            "totalMoneyRaised": 0
+        },
+        {
+            "name": "Educate!",
+            "description": "Preparing youth in Africa with the skills to succeed in today's economy",
+            "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/educate-201807.jpg",
+            "link": "https://www.experienceeducate.org/",
+            "totalHeartsDonated": 0,
+            "totalMoneyRaised": 0
+        },
+        {
+            "name": "Save the Children",
+            "description": "Giving the world's children a healthy start, an opportunity to learn, and protection from harm",
+            "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/save-the-children-201804.png",
+            "link": "https://www.savethechildren.org/",
+            "totalHeartsDonated": 0,
+            "totalMoneyRaised": 0
+        },
+        {
+            "name": "GiveDirectly",
+            "description": "Offers a simple approach to addressing poverty: cut out intermediaries and allow poor families to decide for themselves what they need most.",
+            "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/givedirectly.png",
+            "link": "https://www.givedirectly.org/",
+            "totalHeartsDonated": 0,
+            "totalMoneyRaised": 0
+        },
+        {
+            "name": "Water.org",
+            "description": "Provides safe water and sanitation solutions that give communities health, hope, and a future",
+            "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/water-dot-org.jpg",
+            "link": "http://www.water.org/",
+            "totalHeartsDonated": 0,
+            "totalMoneyRaised": 0
+        }
+    ],
+    "stats": {
+        "totalMoneyDonated": 0
+    }
+}

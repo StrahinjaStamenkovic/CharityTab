@@ -1,0 +1,10 @@
+<div *ngIf="charity" class="card my-2" style="width: 18rem">
+  <a href="{{ charity.link }}" target="_blank">
+    <img src="{{ charity.imagePath }}" class="card-img-top" />
+  </a>
+  <div class="card-body text-center">
+    <h5 class="card-title text-center">{{ charity.name }}</h5>
+    <p class="card-text">{{ charity.description }}</p>
+    <a class="btn btn-primary align-center" (click)="donate()">donate</a>
+  </div>
+</div>

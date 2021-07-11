@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "charity-tab"
+  "defaultProject": "charity-tab",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

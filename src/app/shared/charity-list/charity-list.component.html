@@ -1,0 +1,5 @@
+<div class="d-flex flex-wrap">
+  <div *ngFor="let charity of charities | async" class="mx-2">
+    <app-charity [charity]="charity"></app-charity>
+  </div>
+</div>
