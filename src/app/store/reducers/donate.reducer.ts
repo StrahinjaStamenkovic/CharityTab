@@ -1,28 +1,39 @@
 import { createReducer, on } from '@ngrx/store';
-import { donatingHeartsToCharity } from '../actions/donate.actions';
+import { Charity } from 'src/app/models/charity';
+import { CharityDonation } from 'src/app/models/charity-donation';
+import * as fromDonateActions from '../actions/donate.actions';
 
 export const donateFeatureKey = 'donate';
 
 export interface State {
-  name: string;
-  //id: number;
-  amount: number;
+  donation: CharityDonation | null;
+  isSuccessful: boolean | null;
 }
 
 export const initialState: State = {
-  name: '',
-  //id: NaN,
-  amount: NaN,
+  donation: null,
+  isSuccessful: null,
 };
 
 export const reducer = createReducer(
   initialState,
-  on(donatingHeartsToCharity, (state, action) => {
+  on(fromDonateActions.donatingHeartsToCharity, (state, action) => {
     return {
       ...state,
-      name: action.data.name,
-      //id: action.data.id,
-      amount: action.data.amount,
+      donation: action.data,
+    };
+  }),
+  on(fromDonateActions.donationStatus, (state, action) => {
+    return {
+      ...state,
+      isSuccessful: action.isSuccessful,
+    };
+  }),
+  on(fromDonateActions.clearDonation, (state) => {
+    return {
+      ...state,
+      donation: null,
+      isSuccessful: null,
     };
   })
 );

@@ -2,10 +2,17 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { AlertConfig } from 'ngx-alerts';
+
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
   preferedSearchEngine: 'https://duckduckgo.com/',
+  alertConfig: <AlertConfig>{
+    maxMessages: 5,
+    timeout: 5000,
+    position: 'right',
+  },
 };
 
 /*

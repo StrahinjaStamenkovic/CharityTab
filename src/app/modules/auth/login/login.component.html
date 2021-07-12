@@ -1,7 +1,7 @@
 <div class="row">
   <div class="login-form mt-5 col-md-8 offset-2">
     <h3>Login</h3>
-    <form #f ngForm (ngSubmit)="onSubmit(f.value)">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
         <label for="usernamelogin">Username</label>
         <input
@@ -34,7 +34,7 @@
         [disabled]="f.invalid"
         class="btn btn-primary btn-lg"
       >
-        <span>Login <fa-icon [icon]="faSignInAlt"></fa-icon></span>
+        <span>Login <i class="fas fa-sign-in-alt"></i></span>
       </button>
     </form>
   </div>

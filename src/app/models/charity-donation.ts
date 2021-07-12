@@ -1,5 +1,6 @@
+import { Charity } from './charity';
+
 export interface CharityDonation {
-  name: string;
-  //id: number;
+  charity: Charity;
   amount: number;
 }

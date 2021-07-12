@@ -1,5 +1,5 @@
 export interface Charity {
-  //id: number;
+  id: number;
   name: string;
   description: string;
   imagePath: string;

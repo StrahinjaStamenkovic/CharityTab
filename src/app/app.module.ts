@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -7,19 +9,26 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CharityService } from './services/charity-service.service';
 import * as $ from 'jquery';
+import * as bootstrap from 'bootstrap';
+
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from './store';
-import { CoreComponent } from './core/core.component';
 import { PagesModule } from './pages/pages.module';
-
+import { AlertModule } from 'ngx-alerts';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { EffectsModule } from '@ngrx/effects';
+import { DonateEffects } from './store/effects/donate.effects';
+import { SpinnerEffects } from './store/effects/spinner.effects';
+import { RouteEffects } from './store/effects/route.effects';
+import { AlertEffects } from './store/effects/alert.effects';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  declarations: [AppComponent, CoreComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     SharedModule,
@@ -29,6 +38,9 @@ import { AuthModule } from './modules/auth/auth.module';
     RouterModule,
     AuthModule,
     FormsModule,
+    NgxSpinnerModule,
+    AlertModule.forRoot(environment.alertConfig),
+    BrowserAnimationsModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -41,6 +53,12 @@ import { AuthModule } from './modules/auth/auth.module';
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([
+      DonateEffects,
+      SpinnerEffects,
+      RouteEffects,
+      AlertEffects,
+    ]),
   ],
   providers: [CharityService],
   bootstrap: [AppComponent],

@@ -21,8 +21,7 @@ export class CharityComponent implements OnInit {
       this.store.dispatch(
         donatingHeartsToCharity({
           data: {
-            name: this.charity.name,
-            //id: 123,
+            charity: this.charity,
             amount: 1,
           },
         })

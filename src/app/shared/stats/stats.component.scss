@@ -1,0 +1,30 @@
+.shaddow {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+}
+
+fa-icon,
+p {
+  color: #0000008a;
+}
+p {
+  margin: 0px;
+}
+.stat {
+  flex: 1 0 auto;
+  flex-basis: 200px;
+  height: 200px;
+  margin: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h2 {
+  color: rgb(74, 144, 226);
+  font-size: 60px;
+  font-weight: 400;
+}
+.stat > p {
+  color: #000000de;
+}
