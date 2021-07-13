@@ -12,6 +12,7 @@ import { ProfileHeaderComponent } from './profile-header/profile-header.componen
 import { ProfileNavigationComponent } from './profile-navigation/profile-navigation.component';
 import { StatsComponent } from './stats/stats.component';
 import { AccountComponent } from './account/account.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AccountComponent } from './account/account.component';
     StatsComponent,
     AccountComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, RouterModule],
+  imports: [CommonModule, FontAwesomeModule, RouterModule, StoreModule],
   exports: [
     CharityComponent,
     CharityListComponent,

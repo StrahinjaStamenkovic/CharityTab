@@ -41,7 +41,8 @@ export class CharityService {
       totalHeartsDonated:
         charityDonation.charity.totalHeartsDonated + charityDonation.amount,
       totalMoneyRaised:
-        charityDonation.charity.totalMoneyRaised + charityDonation.amount * 0.1,
+        charityDonation.charity.totalMoneyRaised +
+        charityDonation.amount * 0.01,
     };
     console.log(updatedCharity);
     return this.updateOne(updatedCharity).pipe(

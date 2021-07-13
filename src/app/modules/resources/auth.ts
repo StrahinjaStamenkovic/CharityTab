@@ -1,3 +1,4 @@
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { Bookmark } from 'src/app/models/bookmark';
 import { Note } from 'src/app/models/note';
 import { ToDo } from 'src/app/models/toDo';
@@ -8,14 +9,15 @@ export interface User {
   lastName: string | null;
   username: string | null;
   password: string | null;
-  isAdming: boolean | null;
-  bookmarks: Array<Bookmark> | null;
-  notes: Array<Note> | null;
-  toDo: Array<ToDo> | null;
-  totalCollectedHearts: number | null;
-  currentAmountOfHearts: number | null;
-  totalMoneyDonated: number | null;
-  totalTabsOpened: number | null;
+  isAdming: boolean;
+  bookmarks: Array<Bookmark>;
+  notes: Array<Note>;
+  toDo: Array<ToDo>;
+  totalCollectedHearts: number;
+  currentAmountOfHearts: number;
+  totalMoneyDonated: number;
+  totalHeartsDonated: number;
+  totalTabsOpened: number;
   dateJoined: string | null;
   //prefered search engine
 }
@@ -27,12 +29,13 @@ export var UserModel: User = {
   username: null,
   password: null,
   isAdming: false,
-  bookmarks: null,
-  notes: null,
-  toDo: null,
-  totalCollectedHearts: null,
-  currentAmountOfHearts: null,
-  totalMoneyDonated: null,
-  totalTabsOpened: null,
+  bookmarks: [],
+  notes: [],
+  toDo: [],
+  totalCollectedHearts: 0,
+  currentAmountOfHearts: 0,
+  totalMoneyDonated: 0,
+  totalHeartsDonated: 0,
+  totalTabsOpened: 0,
   dateJoined: null,
 };

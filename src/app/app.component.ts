@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { User } from './modules/resources/auth';
+import { AppState } from './store';
+import { browserReload } from './store/actions/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user: null;
-  constructor(private router: Router) {}
-  ngOnInit(): void {
-    // if (!this.user) {
-    //   this.router.navigate(['/login']);
-    // }
-  }
+  constructor(private store: Store<AppState>) {}
+  ngOnInit(): void {}
   title = 'charity-tab';
 }

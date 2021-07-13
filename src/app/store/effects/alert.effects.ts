@@ -33,4 +33,25 @@ export class AlertEffects {
       ),
     { dispatch: false }
   );
+
+  youAreLoggedOut$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromAuthActions.logout),
+        tap(() => this.alertService.warning("You're logged out"))
+      ),
+    { dispatch: false }
+  );
+  comeBackSoon$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromAuthActions.logout),
+        tap(() =>
+          setTimeout(() => {
+            this.alertService.info('Come Back Soon');
+          }, 2000)
+        )
+      ),
+    { dispatch: false }
+  );
 }

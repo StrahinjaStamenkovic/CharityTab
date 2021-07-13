@@ -5,6 +5,12 @@
   <div class="card-body text-center">
     <h5 class="card-title text-center">{{ charity.name }}</h5>
     <p class="card-text">{{ charity.description }}</p>
-    <a class="btn btn-primary align-center" (click)="donate()">donate</a>
+    <a
+      class="btn btn-primary align-center"
+      *ngIf="heart$ | async as hearts"
+      (click)="donate()"
+      [ngClass]="{ disabled: hearts === 0 }"
+      >donate {{ hearts }}<fa-icon [icon]="faHeart"></fa-icon
+    ></a>
   </div>
 </div>

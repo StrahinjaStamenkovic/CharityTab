@@ -23,10 +23,16 @@ export const reducer = createReducer(
       donation: action.data,
     };
   }),
-  on(fromDonateActions.donationStatus, (state, action) => {
+  on(fromDonateActions.donationSuccessful, (state, action) => {
     return {
       ...state,
-      isSuccessful: action.isSuccessful,
+      isSuccessful: true,
+    };
+  }),
+  on(fromDonateActions.donationUnSuccesful, (state, action) => {
+    return {
+      ...state,
+      isSuccessful: false,
     };
   }),
   on(fromDonateActions.clearDonation, (state) => {

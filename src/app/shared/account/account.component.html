@@ -1,27 +1,27 @@
-<div class="container-fluid p-0">
+<div class="container-fluid p-0" *ngIf="vm$ | async as vm">
   <div class="p-3 border-bottom"><h5 class="m-0">Account</h5></div>
   <div
     class="p-3 border-bottom d-flex align-items-center justify-content-between"
   >
     <p class="font-weight-bold">Username</p>
-    <p>Strahinja3711</p>
+    <p>{{ vm.username }}</p>
   </div>
   <div
     class="p-3 border-bottom d-flex align-items-center justify-content-between"
   >
-    <p class="font-weight-bold">Ime</p>
-    <p>Strahinja</p>
+    <p class="font-weight-bold">First Name</p>
+    <p>{{ vm.name }}</p>
   </div>
   <div
     class="p-3 border-bottom d-flex align-items-center justify-content-between"
   >
-    <p class="font-weight-bold">Prezime</p>
-    <p>Stamenkovic</p>
+    <p class="font-weight-bold">Last Name</p>
+    <p>{{ vm.lastName }}</p>
   </div>
   <div
     class="p-3 border-bottom d-flex align-items-center justify-content-between"
   >
-    <p class="font-weight-bold">Email</p>
-    <p>strahinjastamenkovic9@gmail.com</p>
+    <p class="font-weight-bold">Date Joined</p>
+    <p>{{ vm.dateJoined }}</p>
   </div>
 </div>

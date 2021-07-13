@@ -136,10 +136,12 @@ fa-icon {
   background-color: #832b8a !important;
   border: none !important;
 }
-.btn-primary:active {
+.btn-primary:active,
+.btn-primary:focus {
   background-color: #66226b !important;
   border: none !important;
 }
+
 .btn-primary:hover {
   background-color: #66226b !important;
   border: none !important;
@@ -151,4 +153,7 @@ fa-icon {
 .dropdown-menu a:active {
   opacity: 1;
   background-color: inherit;
+}
+a:hover {
+  cursor: pointer;
 }

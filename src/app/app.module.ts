@@ -26,6 +26,7 @@ import { SpinnerEffects } from './store/effects/spinner.effects';
 import { RouteEffects } from './store/effects/route.effects';
 import { AlertEffects } from './store/effects/alert.effects';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AppEffects } from './store/effects/app.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -58,6 +59,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       SpinnerEffects,
       RouteEffects,
       AlertEffects,
+      AppEffects,
     ]),
   ],
   providers: [CharityService],

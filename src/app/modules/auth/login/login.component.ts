@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
@@ -12,9 +13,12 @@ import * as fromAuthActions from 'src/app/store/actions/auth.actions';
 })
 export class LoginComponent implements OnInit {
   faSignInAlt = faSignInAlt;
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let user = localStorage.getItem('user');
+    if (user) this.router.navigate(['/newtab']);
+  }
   onSubmit(f: NgForm) {
     console.log(f.value.username, f.value.password);
     this.store.dispatch(

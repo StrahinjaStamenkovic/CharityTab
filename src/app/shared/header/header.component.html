@@ -53,15 +53,16 @@
 
       <!-- Right Links-->
       <ul
+        *ngIf="vm$ | async as vm"
         class="mb-2 mb-lg-0 ml-auto nav nav-tabs align-items-center flex-nowrap"
       >
         <li class="dropdown">
           <h3 class="nav-link text-nowrap" data-toggle="dropdown">
-            {{ money }}
+            ${{ vm.totalMoneyDonated }}
           </h3>
           <div class="dropdown-menu dropdown-menu-right px-2">
             <p class="my-0">
-              This is how much money our community has raised for charity.
+              This is how much money you have raised for charity.
             </p>
           </div>
         </li>
@@ -72,7 +73,7 @@
 
         <li class="dropdown">
           <h3 class="nav-link text-nowrap" data-toggle="dropdown">
-            {{ hearts }} <fa-icon [icon]="faHeart"></fa-icon>
+            {{ vm.userHeartsAmount }} <fa-icon [icon]="faHeart"></fa-icon>
           </h3>
           <div class="dropdown-menu dropdown-menu-right">
             <div
@@ -84,15 +85,16 @@
               "
             >
               <h3 class="mb-0 mt-1">
-                {{ hearts }} <fa-icon [icon]="faHeart"></fa-icon>
+                {{ vm.userTotalHeartsDonated }}
+                <fa-icon [icon]="faHeart"></fa-icon>
               </h3>
               <p class="my-0">donated</p>
-              <button
+              <a
                 class="btn btn-primary text-nowrap mx-2 mb-3 mt-1"
-                (click)="redirectDonate()"
+                [routerLink]="['/profile/donate']"
               >
                 DONATE HEARTS
-              </button>
+              </a>
             </div>
             <div class="dropdown-divider"></div>
             <div class="d-flex justify-content-between px-3">
@@ -123,9 +125,7 @@
               >Your stats</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['/auth/logout']"
-              >Sign Out</a
-            >
+            <a class="dropdown-item" (click)="logout()">Sign Out</a>
           </div>
         </li>
       </ul>

@@ -1,35 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import {
-  faBookmark,
-  faHeart,
-  faStickyNote,
-} from '@fortawesome/free-regular-svg-icons';
-import {
-  faEllipsisV,
-  faListUl,
-  faSearch,
-} from '@fortawesome/free-solid-svg-icons';
+import * as fromFontAwesomeRegular from '@fortawesome/free-regular-svg-icons';
+import * as fromFontAwesomeSolid from '@fortawesome/free-solid-svg-icons';
+import { select, Store } from '@ngrx/store';
+import { AppState } from 'src/app/store';
+import { logout } from 'src/app/store/actions/auth.actions';
 import { environment } from 'src/environments/environment';
-
+import * as fromHeaderSelectors from 'src/app/store/selectors/header.selectors';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  faBookmark = faBookmark;
-  faStickyNote = faStickyNote;
-  faListUl = faListUl;
-  faSearch = faSearch;
-  faHeart = faHeart;
-  faSettings = faEllipsisV;
+  faBookmark = fromFontAwesomeRegular.faBookmark;
+  faStickyNote = fromFontAwesomeRegular.faStickyNote;
+  faListUl = fromFontAwesomeSolid.faListUl;
+  faSearch = fromFontAwesomeSolid.faSearch;
+  faHeart = fromFontAwesomeRegular.faHeart;
+  faSettings = fromFontAwesomeSolid.faEllipsisV;
 
-  hearts: number = 450;
-  money: string = '$1,186,147.66';
-  constructor(private router: Router) {}
+  vm$: Observable<fromHeaderSelectors.HeaderViewModel> | null = null;
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    this.initializeSearch();
+    this.vm$ = this.store.pipe(
+      select(fromHeaderSelectors.selectHeaderViewModel)
+    );
+  }
+
+  logout(): void {
+    this.store.dispatch(logout());
+  }
+  initializeSearch() {
     $('.search-input').on('keypress', (event: JQuery.KeyPressEvent) => {
       if (
         (event.keyCode === 13 || event.which === 13) &&
@@ -43,17 +47,5 @@ export class HeaderComponent implements OnInit {
     $('.search').on('click', (event: JQuery.ClickEvent) => {
       $('.search-input').trigger('focus');
     });
-
-    // $('.dropdown').on('show.bs.dropdown', function () {
-    //   $(this)
-    //     .find('.dropdown-menu')
-    //     .first()
-    //     .stop(true, true)
-    //     .delay(250)
-    //     .slideDown();
-    // });
-  }
-  redirectDonate(): void {
-    this.router.navigate(['/profile/donate']); //Popravi
   }
 }

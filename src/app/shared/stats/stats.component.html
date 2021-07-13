@@ -1,7 +1,7 @@
-<div class="container-fluid p-0">
+<div class="container-fluid p-0" *ngIf="vm$ | async as vm">
   <div class="container-fluid p-3 shaddow mb-2 d-flex justify-content-center">
     <fa-icon [icon]="faChartBar" class="mr-2"></fa-icon>
-    <p>Hi, Strahinja3711! Here are all of your statistics.</p>
+    <p>Hi, {{ vm.username }}! Here are all of your statistics.</p>
   </div>
   <div
     class="
@@ -13,17 +13,21 @@
       p-0
     "
   >
-    <div class="shaddow stat p-5">
-      <h2>365</h2>
-      <p class="text-nowrap">days as a Tabber</p>
-    </div>
     <div class="shaddow stat">
-      <h2>365</h2>
+      <h2>{{ vm.totalTabsOpened }}</h2>
       <p class="text-nowrap">tabs all time</p>
     </div>
     <div class="shaddow stat">
-      <h2>365</h2>
+      <h2>{{ vm.totalCollectedHearts }}</h2>
+      <p class="text-nowrap">hearts all time</p>
+    </div>
+    <div class="shaddow stat">
+      <h2>{{ vm.totalHeartsDonated }}</h2>
       <p class="text-nowrap">Hearts donated</p>
+    </div>
+    <div class="shaddow stat p-5">
+      <h2>{{ vm.totalMoneyDonated }}</h2>
+      <p class="text-nowrap">Money donated</p>
     </div>
   </div>
 </div>
