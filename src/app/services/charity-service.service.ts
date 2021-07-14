@@ -36,6 +36,7 @@ export class CharityService {
   donateToCharity(charityDonation: CharityDonation): Observable<boolean> {
     // charityDonation.charity.totalHeartsDonated += charityDonation.amount;
     // charityDonation.charity.totalMoneyRaised += charityDonation.amount * 0.1;
+    console.log(charityDonation);
     let updatedCharity: Charity = {
       ...charityDonation.charity,
       totalHeartsDonated:
@@ -50,7 +51,5 @@ export class CharityService {
         return of(charity !== null);
       })
     );
-
-    //return of(true);
   }
 }

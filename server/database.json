@@ -43,8 +43,8 @@
       "description": "Giving the world's children a healthy start, an opportunity to learn, and protection from harm",
       "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/save-the-children-201804.png",
       "link": "https://www.savethechildren.org/",
-      "totalHeartsDonated": 3,
-      "totalMoneyRaised": 0.30000000000000004
+      "totalHeartsDonated": 4,
+      "totalMoneyRaised": 0.31000000000000005
     },
     {
       "id": 4,
@@ -61,8 +61,8 @@
       "description": "Provides safe water and sanitation solutions that give communities health, hope, and a future",
       "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/water-dot-org.jpg",
       "link": "http://www.water.org/",
-      "totalHeartsDonated": 2,
-      "totalMoneyRaised": 0.11
+      "totalHeartsDonated": 3,
+      "totalMoneyRaised": 0.12
     }
   ],
   "stats": {

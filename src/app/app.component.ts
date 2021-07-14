@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { User } from './modules/resources/auth';
-import { AppState } from './store';
-import { browserReload } from './store/actions/auth.actions';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +7,7 @@ import { browserReload } from './store/actions/auth.actions';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<AppState>) {}
+  constructor() {}
   ngOnInit(): void {}
   title = 'charity-tab';
 }

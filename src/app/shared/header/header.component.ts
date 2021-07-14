@@ -31,7 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    this.store.dispatch(logout());
+    this.store.dispatch(
+      logout(JSON.parse(<string>localStorage.getItem('user')))
+    );
   }
   initializeSearch() {
     $('.search-input').on('keypress', (event: JQuery.KeyPressEvent) => {
