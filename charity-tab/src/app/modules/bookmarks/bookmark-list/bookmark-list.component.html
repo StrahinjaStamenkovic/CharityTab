@@ -1,0 +1,63 @@
+<div class="container-fluid p-0" *ngIf="bookmark$ | async as bookmarks">
+  <div class="bookmarks-tab px-2">
+    <div
+      class="
+        bookmarks-control
+        d-inline-flex
+        justify-content-between
+        align-items-center
+      "
+      *ngIf="controlVisibility"
+    >
+      <p class="m-0 pr-2">Bookmarks</p>
+      <button class="addButton p-0" (click)="toggleForm()">
+        <fa-icon [icon]="faCirclePlus" class="circlePlus"></fa-icon>
+      </button>
+    </div>
+
+    <div class="input-form" *ngIf="inputVisibility">
+      <form
+        #f="ngForm"
+        (ngSubmit)="onSubmit(f)"
+        (keydown.enter)="$event.preventDefault()"
+      >
+        <div class="d-flex justify-content-end">
+          <button type="reset" (click)="toggleForm()">
+            <fa-icon [icon]="faCircleX"></fa-icon>
+          </button>
+          <button type="submit" [disabled]="f.invalid">
+            <fa-icon [icon]="faCircleCheck"></fa-icon>
+          </button>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="name"
+            ngModel
+            #name
+            required
+            id="bookmark-name"
+            class="form-control"
+            placeholder="Google"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="url"
+            ngModel
+            #url
+            required
+            id="bookmark-url"
+            class="form-control"
+            placeholder="www.google.com"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngFor="let bookmark of bookmarks" class="mx-2">
+    <app-bookmark [bookmark]="bookmark"></app-bookmark>
+  </div>
+</div>
