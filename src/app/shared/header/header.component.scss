@@ -86,6 +86,11 @@ li > span.active > button {
 }
 h3.nav-link {
   opacity: 0.8;
+  transition: opacity 0.3s linear;
+  -webkit-transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -ms-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
 }
 
 li.dropdown.show > h3.nav-link,

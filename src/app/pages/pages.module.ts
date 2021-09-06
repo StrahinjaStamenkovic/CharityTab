@@ -8,6 +8,10 @@ import { NewtabComponent } from './newtab/newtab.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SharedModule } from '../shared/shared.module';
+import { BookmarksModule } from '../modules/bookmarks/bookmarks.module';
+import { NotesModule } from '../modules/notes/notes.module';
+import { TodosModule } from '../modules/todos/todos.module';
+import { CharitiesModule } from '../modules/charities/charities.module';
 
 @NgModule({
   declarations: [NewtabComponent, NotFoundComponent, ProfileComponent],
@@ -17,6 +21,10 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     RouterModule,
     SharedModule,
+    BookmarksModule,
+    NotesModule,
+    TodosModule,
+    CharitiesModule,
   ],
 })
 export class PagesModule {}

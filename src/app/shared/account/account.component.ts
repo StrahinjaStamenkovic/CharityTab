@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store';
-import * as fromAccountSelectors from 'src/app/store/selectors/account.selectors';
+import * as fromAccountSelectors from 'src/app/store/account/account.selectors';
 
 @Component({
   selector: 'app-account',

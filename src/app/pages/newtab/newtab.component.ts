@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { User } from 'src/app/modules/resources/auth';
+import { User } from 'src/app/modules/auth/resources/auth';
 import { AppState } from 'src/app/store';
-import { newTab } from 'src/app/store/actions/app.actions';
-import { browserReload } from 'src/app/store/actions/auth.actions';
+import { newTab } from 'src/app/store/app/app.actions';
+import { browserReload } from 'src/app/modules/auth/state/auth.actions';
 
 @Component({
   selector: 'app-newtab',

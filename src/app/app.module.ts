@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { CharityService } from './services/charity-service.service';
+import { CharityService } from './services/charity.service';
 import * as $ from 'jquery';
 import * as bootstrap from 'bootstrap';
 
@@ -21,12 +21,12 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { EffectsModule } from '@ngrx/effects';
-import { DonateEffects } from './store/effects/donate.effects';
-import { SpinnerEffects } from './store/effects/spinner.effects';
-import { RouteEffects } from './store/effects/route.effects';
-import { AlertEffects } from './store/effects/alert.effects';
+import { DonateEffects } from './store/donate/donate.effects';
+import { SpinnerEffects } from './store/spinner/spinner.effects';
+import { RouteEffects } from './store/route/route.effects';
+import { AlertEffects } from './store/alert/alert.effects';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AppEffects } from './store/effects/app.effects';
+import { AppEffects } from './store/app/app.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,6 +51,10 @@ import { AppEffects } from './store/effects/app.effects';
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

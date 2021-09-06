@@ -3,10 +3,11 @@ import * as fromFontAwesomeRegular from '@fortawesome/free-regular-svg-icons';
 import * as fromFontAwesomeSolid from '@fortawesome/free-solid-svg-icons';
 import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
-import { logout } from 'src/app/store/actions/auth.actions';
+import { logout } from 'src/app/modules/auth/state/auth.actions';
 import { environment } from 'src/environments/environment';
-import * as fromHeaderSelectors from 'src/app/store/selectors/header.selectors';
+import * as fromHeaderSelectors from 'src/app/store/header/header.selectors';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/modules/auth/resources/auth';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
   faSettings = fromFontAwesomeSolid.faEllipsisV;
 
   vm$: Observable<fromHeaderSelectors.HeaderViewModel> | null = null;
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
@@ -31,10 +33,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
+    console.log(<string>localStorage.getItem('user'));
     this.store.dispatch(
-      logout(JSON.parse(<string>localStorage.getItem('user')))
+      logout({ user: JSON.parse(<string>localStorage.getItem('user')) })
     );
   }
+
   initializeSearch() {
     $('.search-input').on('keypress', (event: JQuery.KeyPressEvent) => {
       if (

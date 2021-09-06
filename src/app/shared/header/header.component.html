@@ -7,7 +7,6 @@
       justify-content-between
     "
   >
-    <!-- Container wrapper -->
     <div class="container-fluid px-0 flex-nowrap">
       <ul class="mb-2 mb-lg-0 nav nav-tabs align-items-center flex-nowrap">
         <li class="nav-item">
@@ -15,16 +14,19 @@
             ><button><fa-icon [icon]="faBookmark"></fa-icon></button
           ></span>
         </li>
+
         <li class="nav-item">
           <span data-target="#notes" data-toggle="tab"
             ><button><fa-icon [icon]="faStickyNote"></fa-icon></button
           ></span>
         </li>
+
         <li class="nav-item">
-          <span data-target="#toDo" data-toggle="tab" class="active"
+          <span data-target="#toDo" data-toggle="tab"
             ><button><fa-icon [icon]="faListUl"></fa-icon></button
           ></span>
         </li>
+
         <div
           class="
             d-flex
@@ -49,6 +51,7 @@
           </div>
         </div>
       </ul>
+
       <!-- Left links -->
 
       <!-- Right Links-->
@@ -110,10 +113,12 @@
             </div>
           </div>
         </li>
+
         <li class="dropdown">
           <h3 class="nav-link" data-toggle="dropdown">
             <fa-icon [icon]="faSettings"></fa-icon>
           </h3>
+
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" [routerLink]="['/profile/account']"
               >Account</a

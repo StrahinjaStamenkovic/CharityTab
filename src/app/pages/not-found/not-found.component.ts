@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { User } from 'src/app/modules/resources/auth';
+import { User } from 'src/app/modules/auth/resources/auth';
 import { AppState } from 'src/app/store';
-import { browserReload } from 'src/app/store/actions/auth.actions';
+import { browserReload } from 'src/app/modules/auth/state/auth.actions';
 
 @Component({
   selector: 'app-not-found',

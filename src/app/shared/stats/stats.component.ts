@@ -3,7 +3,7 @@ import { faChartBar } from '@fortawesome/free-solid-svg-icons';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store';
-import * as fromStatsSelectors from 'src/app/store/selectors/stats.selectors';
+import * as fromStatsSelectors from 'src/app/store/stats/stats.selectors';
 
 @Component({
   selector: 'app-stats',
