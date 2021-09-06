@@ -1,0 +1,131 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Strahinja",
+      "lastName": "Stamenkovic",
+      "username": "Strahinja3711",
+      "password": "Strahinja3711",
+      "isAdmin": false,
+      "bookmarks": [
+        {
+          "name": "google",
+          "link": "www.google.com",
+          "dateAdded": "8-8-2021"
+        },
+        {
+          "name": "google",
+          "link": "www.google.com",
+          "dateAdded": "8-8-2021"
+        },
+        {
+          "name": "google",
+          "link": "www.google.com",
+          "dateAdded": "8-8-2021"
+        },
+        {
+          "name": "google",
+          "link": "www.google.com",
+          "dateAdded": "8-8-2021"
+        },
+        {
+          "name": "google",
+          "link": "www.google.com",
+          "dateAdded": "8-8-2021"
+        }
+      ],
+      "notes": [],
+      "toDos": [],
+      "totalCollectedHearts": 55,
+      "currentAmountOfHearts": 25,
+      "totalMoneyDonated": 0.3,
+      "totalHeartsDonated": 30,
+      "totalTabsOpened": 55,
+      "dateJoined": "12-7-2021"
+    },
+    {
+      "id": 2,
+      "name": "Strahinja",
+      "lastName": "Stamenkovic",
+      "username": "Strahinja37112",
+      "password": "Strahinja37112",
+      "isAdming": false,
+      "bookmarks": [],
+      "notes": [],
+      "toDo": [],
+      "totalCollectedHearts": 0,
+      "currentAmountOfHearts": 0,
+      "totalMoneyDonated": 0,
+      "totalHeartsDonated": 0,
+      "totalTabsOpened": 0,
+      "dateJoined": "8-7-2021"
+    },
+    {
+      "id": 3,
+      "name": "Strahinja",
+      "lastName": "Stamenkovic",
+      "username": "Stt",
+      "password": "Stt",
+      "isAdming": false,
+      "bookmarks": [],
+      "notes": [],
+      "toDo": [],
+      "totalCollectedHearts": 0,
+      "currentAmountOfHearts": 0,
+      "totalMoneyDonated": 0,
+      "totalHeartsDonated": 0,
+      "totalTabsOpened": 0,
+      "dateJoined": "11-7-2021"
+    }
+  ],
+  "charities": [
+    {
+      "id": 1,
+      "name": "Action Against Hunger",
+      "description": "A global humanitarian organization committed to ending world hunger",
+      "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/acfusa-201804.png",
+      "link": "https://www.actionagainsthunger.org/",
+      "totalHeartsDonated": 27,
+      "totalMoneyRaised": 1.4400000000000002
+    },
+    {
+      "id": 2,
+      "name": "Educate!",
+      "description": "Preparing youth in Africa with the skills to succeed in today's economy",
+      "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/educate-201807.jpg",
+      "link": "https://www.experienceeducate.org/",
+      "totalHeartsDonated": 13,
+      "totalMoneyRaised": 0.94
+    },
+    {
+      "id": 3,
+      "name": "Save the Children",
+      "description": "Giving the world's children a healthy start, an opportunity to learn, and protection from harm",
+      "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/save-the-children-201804.png",
+      "link": "https://www.savethechildren.org/",
+      "totalHeartsDonated": 4,
+      "totalMoneyRaised": 0.31000000000000005
+    },
+    {
+      "id": 4,
+      "name": "GiveDirectly",
+      "description": "Offers a simple approach to addressing poverty: cut out intermediaries and allow poor families to decide for themselves what they need most.",
+      "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/givedirectly.png",
+      "link": "https://www.givedirectly.org/",
+      "totalHeartsDonated": 1,
+      "totalMoneyRaised": 0.1
+    },
+    {
+      "id": 5,
+      "name": "Water.org",
+      "description": "Provides safe water and sanitation solutions that give communities health, hope, and a future",
+      "imagePath": "https://prod-tab2017-media.gladly.io/img/charities/charity-logos/water-dot-org.jpg",
+      "link": "http://www.water.org/",
+      "totalHeartsDonated": 3,
+      "totalMoneyRaised": 0.12
+    }
+  ],
+  "stats": {
+    "totalMoneyDonated": 0
+  }
+}
