@@ -1,5 +1,5 @@
 <div class="container-fluid p-0" *ngIf="note$ | async as notes">
-  <div class="notes-tab px-2">
+  <div class="notes-tab px-2" [ngClass]="{ expanded: inputVisibility }">
     <div
       class="
         notes-control
@@ -32,21 +32,21 @@
         <div class="form-group">
           <input
             type="text"
-            name="name"
+            name="text"
             ngModel
-            #name
+            #text
             required
-            id="todo-task"
+            id="note-text"
             class="form-control"
-            placeholder="What do you need to do?"
+            placeholder="Note content..."
           />
         </div>
       </form>
     </div>
   </div>
 
-  <div>
-    <div *ngFor="let note of notes" class="mx-2">
+  <div class="note-list">
+    <div *ngFor="let note of notes" class="m-2">
       <app-note [note]="note"></app-note>
     </div>
   </div>

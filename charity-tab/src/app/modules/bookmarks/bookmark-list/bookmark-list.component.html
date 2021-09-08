@@ -1,5 +1,5 @@
 <div class="container-fluid p-0" *ngIf="bookmark$ | async as bookmarks">
-  <div class="bookmarks-tab px-2">
+  <div class="bookmarks-tab px-2" [ngClass]="{ expanded: inputVisibility }">
     <div
       class="
         bookmarks-control
@@ -20,6 +20,7 @@
         #f="ngForm"
         (ngSubmit)="onSubmit(f)"
         (keydown.enter)="$event.preventDefault()"
+        autocomplete="off"
       >
         <div class="d-flex justify-content-end">
           <button type="reset" (click)="toggleForm()">
@@ -39,6 +40,7 @@
             id="bookmark-name"
             class="form-control"
             placeholder="Google"
+            autocomplete="disabled"
           />
         </div>
         <div class="form-group">
@@ -50,14 +52,18 @@
             required
             id="bookmark-url"
             class="form-control"
-            placeholder="www.google.com"
+            placeholder="http://www.google.com"
+            patter="((?:https?\:\/\/)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)"
+            autocomplete="disabled"
           />
         </div>
       </form>
     </div>
   </div>
 
-  <div *ngFor="let bookmark of bookmarks" class="mx-2">
-    <app-bookmark [bookmark]="bookmark"></app-bookmark>
+  <div class="bookmark-list">
+    <div *ngFor="let bookmark of bookmarks" class="m-2">
+      <app-bookmark [bookmark]="bookmark"></app-bookmark>
+    </div>
   </div>
 </div>

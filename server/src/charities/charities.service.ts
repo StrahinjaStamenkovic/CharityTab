@@ -27,7 +27,18 @@ export class CharitiesService {
       totalMoneyRaised,
     });
     const result = await newCharity.save();
-    return { statusCode: 200, charity: result };
+    return {
+      statusCode: 200,
+      charity: {
+        id: result.id,
+        name: result.name,
+        description: result.description,
+        imagePath: result.imagePath,
+        link: result.link,
+        totalHeartsDonated: result.totalHeartsDonated,
+        totalMoneyRaised: result.totalMoneyRaised,
+      },
+    };
   }
 
   async getCharities() {
@@ -91,7 +102,18 @@ export class CharitiesService {
       updatedCharity.totalMoneyRaised = totalMoneyRaised;
     }
     updatedCharity.save();
-    return { statusCode: 200, charity: updatedCharity };
+    return {
+      statusCode: 200,
+      charity: {
+        id: updatedCharity.id,
+        name: updatedCharity.name,
+        description: updatedCharity.description,
+        imagePath: updatedCharity.imagePath,
+        link: updatedCharity.link,
+        totalHeartsDonated: updatedCharity.totalHeartsDonated,
+        totalMoneyRaised: updatedCharity.totalMoneyRaised,
+      },
+    };
   }
 
   async deleteCharity(charityId: string) {

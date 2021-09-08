@@ -20,7 +20,7 @@ export class UsersService {
     totalHeartsDonated: number,
     totalTabsOpened: number,
     dateJoined: string,
-  ): Promise<{ statusCode: number; user: User }> {
+  ) {
     const newUser = new this.userModel({
       name,
       lastName,
@@ -35,7 +35,23 @@ export class UsersService {
       dateJoined,
     });
     const generatedUser = await newUser.save();
-    return { statusCode: 200, user: generatedUser };
+    return {
+      statusCode: 200,
+      user: {
+        id: generatedUser.id,
+        name: generatedUser.name,
+        lastName: generatedUser.lastName,
+        username: generatedUser.username,
+        password: generatedUser.password,
+        isAdmin: generatedUser.isAdmin,
+        totalCollectedHearts: generatedUser.totalCollectedHearts,
+        currentAmountOfHearts: generatedUser.currentAmountOfHearts,
+        totalMoneyDonated: generatedUser.totalMoneyDonated,
+        totalHeartsDonated: generatedUser.totalHeartsDonated,
+        totalTabsOpened: generatedUser.totalTabsOpened,
+        dateJoined: generatedUser.dateJoined,
+      },
+    };
   }
 
   async getUsers() {
@@ -161,7 +177,23 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException('Could not find user.');
     }
-    return { statusCode: 200, user };
+    return {
+      statusCode: 200,
+      user: {
+        id: user.id,
+        name: user.name,
+        lastName: user.lastName,
+        username: user.username,
+        password: user.password,
+        isAdmin: user.isAdmin,
+        totalCollectedHearts: user.totalCollectedHearts,
+        currentAmountOfHearts: user.currentAmountOfHearts,
+        totalMoneyDonated: user.totalMoneyDonated,
+        totalHeartsDonated: user.totalHeartsDonated,
+        totalTabsOpened: user.totalTabsOpened,
+        dateJoined: user.dateJoined,
+      },
+    };
   }
 
   public async checkUsernameAvailability(username: string) {

@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
 import { Bookmark } from 'src/app/modules/bookmarks/state/bookmark.model';
+import { AppState } from 'src/app/store';
+import { deleteBookmark } from '../state/bookmark.actions';
 
 @Component({
   selector: 'app-bookmark',
@@ -8,10 +12,14 @@ import { Bookmark } from 'src/app/modules/bookmarks/state/bookmark.model';
 })
 export class BookmarkComponent implements OnInit {
   @Input() bookmark: Bookmark | null = null;
-  constructor() {}
+  faDeleteIcon = faTimesCircle;
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
-  redirect() {
-    if (this.bookmark) (window as any).open(this.bookmark.link, '_blank');
+
+  delete() {
+    if (this.bookmark)
+      this.store.dispatch(deleteBookmark({ id: this.bookmark.id }));
   }
 }

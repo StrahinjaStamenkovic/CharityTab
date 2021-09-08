@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 import { Note } from 'src/app/modules/notes/state/note.model';
 import { AppState } from 'src/app/store';
 import * as fromNotesSelector from 'src/app/modules/notes/state/notes.selectors';
+import { selectUserId } from '../../auth/state/auth.selectors';
+import { NoteService } from 'src/app/services/note.service';
+import * as fromNotesActions from '../state/note.actions';
 
 @Component({
   selector: 'app-note-list',
@@ -26,13 +29,23 @@ export class NoteListComponent implements OnInit {
   controlVisibility: boolean = true;
   inputVisibility: boolean = false;
 
-  constructor(private store: Store<AppState>) {}
+  userId!: string | null;
+
+  constructor(
+    private store: Store<AppState>,
+    private notesService: NoteService
+  ) {}
 
   ngOnInit(): void {
-    this.note$ = this.store.pipe(
-      select(fromNotesSelector.selectNotes)
-      // tap((bookmarks) => console.log(bookmarks))
-    );
+    this.store
+      .pipe(select(selectUserId))
+      .subscribe((userId) => (this.userId = userId));
+
+    //Dispatch an action to load all notes for a given userId
+    if (this.userId)
+      this.store.dispatch(fromNotesActions.loadNotes({ userId: this.userId }));
+
+    this.note$ = this.store.pipe(select(fromNotesSelector.selectAllNotes));
   }
   toggleForm() {
     this.controlVisibility = !this.controlVisibility;
@@ -40,6 +53,11 @@ export class NoteListComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value.name, f.value.url);
+    console.log(f.value.text);
+    this.toggleForm();
+    if (this.userId)
+      this.store.dispatch(
+        fromNotesActions.addNote({ text: f.value.text, userId: this.userId })
+      );
   }
 }

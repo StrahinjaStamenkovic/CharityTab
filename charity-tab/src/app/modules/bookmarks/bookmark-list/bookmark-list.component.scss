@@ -2,12 +2,12 @@
   background-color: #9d4ba3;
   border-radius: 2px;
   color: white;
-  max-width: 340px;
-  transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
+  max-width: 125px;
+  transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -15,7 +15,10 @@
 }
 .bookmarks-control {
   display: block;
-  width: 120px;
+  width: 105px;
+}
+.expanded {
+  max-width: 340px;
 }
 button {
   background-color: transparent;
@@ -46,3 +49,29 @@ fa-icon:hover {
   width: 320px;
   height: 140px;
 }
+.bookmark-list {
+  overflow: auto;
+  max-height: 600px;
+}
+
+// input,
+// input:active,
+// input:hover,
+// input:focus {
+//   background-color: transparent;
+//   color: rgba(255, 255, 255, 0.8);
+//   border: none;
+//   border-bottom: thin solid white;
+//   border-radius: 0px;
+//   -webkit-border-radius: 0px;
+//   -moz-border-radius: 0px;
+//   -ms-border-radius: 0px;
+//   -o-border-radius: 0px;
+// }
+// input::placeholder {
+//   color: rgba(255, 255, 255, 0.6);
+// }
+// input:focus {
+//   outline: none;
+//   box-shadow: none;
+// }

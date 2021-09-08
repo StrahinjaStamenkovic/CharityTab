@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AlertService } from 'ngx-alerts';
 import { tap } from 'rxjs/operators';
+import {
+  addBookmarkFailure,
+  addBookmarkSuccess,
+} from 'src/app/modules/bookmarks/state/bookmark.actions';
 import * as fromAuthActions from '../../modules/auth/state/auth.actions';
 
 @Injectable()
@@ -79,6 +83,32 @@ export class AlertEffects {
         tap(() =>
           setTimeout(() => {
             this.alertService.info('Come Back Soon');
+          }, 2000)
+        )
+      ),
+    { dispatch: false }
+  );
+
+  unableToCreateBookmark$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addBookmarkFailure),
+        tap(() =>
+          setTimeout(() => {
+            this.alertService.danger('Unable to create a bookmark');
+          }, 2000)
+        )
+      ),
+    { dispatch: false }
+  );
+
+  successfulyAddedBookmark$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addBookmarkSuccess),
+        tap(() =>
+          setTimeout(() => {
+            this.alertService.success('Bookmark added successfuly');
           }, 2000)
         )
       ),

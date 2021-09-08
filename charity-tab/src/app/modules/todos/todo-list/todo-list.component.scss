@@ -2,12 +2,12 @@
   background-color: #9d4ba3;
   border-radius: 2px;
   color: white;
-  max-width: 340px;
-  transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
+  max-width: 118px;
+  transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -15,7 +15,10 @@
 }
 .todos-control {
   display: block;
-  width: 120px;
+  width: 100px;
+}
+.expanded {
+  max-width: 340px;
 }
 button {
   background-color: transparent;
@@ -45,4 +48,8 @@ fa-icon:hover {
 .input-form {
   width: 320px;
   height: 80px;
+}
+.todo-list {
+  overflow: auto;
+  max-height: 600px;
 }

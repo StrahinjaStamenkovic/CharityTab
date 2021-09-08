@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { TodosController } from './todos.controller';
@@ -8,6 +8,6 @@ import { TodoSchema } from './todo.model';
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'Todo', schema: TodoSchema }])],
   controllers: [TodosController],
-  providers: [TodosService],
+  providers: [TodosService, Logger],
 })
 export class TodosModule {}

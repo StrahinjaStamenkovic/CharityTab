@@ -6,54 +6,52 @@ import * as NoteActions from './note.actions';
 export const notesFeatureKey = 'notes';
 
 export interface State extends EntityState<Note> {
-  // additional entities state properties
+  // additional entity state properties
+  error: any;
+  userId: string | null;
 }
 
 export const adapter: EntityAdapter<Note> = createEntityAdapter<Note>();
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
+  error: null,
+  userId: null,
 });
-
 
 export const reducer = createReducer(
   initialState,
-  on(NoteActions.addNote,
-    (state, action) => adapter.addOne(action.note, state)
+
+  //Load
+  on(NoteActions.loadNotes, (state, action) => ({
+    ...state,
+    userId: action.userId,
+  })),
+  on(NoteActions.loadNotesSuccess, (state, action) =>
+    adapter.setAll(action.notes, state)
   ),
-  on(NoteActions.upsertNote,
-    (state, action) => adapter.upsertOne(action.note, state)
+
+  //Add
+  on(NoteActions.addNoteSuccess, (state, action) =>
+    adapter.addOne(action.note, state)
   ),
-  on(NoteActions.addNotes,
-    (state, action) => adapter.addMany(action.notes, state)
+
+  //Delete
+  on(NoteActions.deleteNote, (state, action) =>
+    adapter.removeOne(action.id, state)
   ),
-  on(NoteActions.upsertNotes,
-    (state, action) => adapter.upsertMany(action.notes, state)
-  ),
-  on(NoteActions.updateNote,
-    (state, action) => adapter.updateOne(action.note, state)
-  ),
-  on(NoteActions.updateNotes,
-    (state, action) => adapter.updateMany(action.notes, state)
-  ),
-  on(NoteActions.deleteNote,
-    (state, action) => adapter.removeOne(action.id, state)
-  ),
-  on(NoteActions.deleteNotes,
-    (state, action) => adapter.removeMany(action.ids, state)
-  ),
-  on(NoteActions.loadNotes,
-    (state, action) => adapter.setAll(action.notes, state)
-  ),
-  on(NoteActions.clearNotes,
-    state => adapter.removeAll(state)
-  ),
+
+  //Error
+  on(
+    NoteActions.loadNotesFailure,
+    NoteActions.addNoteFailure,
+    NoteActions.deleteNoteFailure,
+    (state, action) => ({
+      ...state,
+      error: action.error,
+    })
+  )
 );
 
-
-export const {
-  selectIds,
-  selectEntities,
-  selectAll,
-  selectTotal,
-} = adapter.getSelectors();
+export const { selectIds, selectEntities, selectAll, selectTotal } =
+  adapter.getSelectors();

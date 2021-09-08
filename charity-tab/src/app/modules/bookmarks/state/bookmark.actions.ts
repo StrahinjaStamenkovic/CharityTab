@@ -17,46 +17,31 @@ export const loadBookmarksFailure = createAction(
   props<{ error: any }>()
 );
 
-//
-/*
+//Add Bookmarks
 export const addBookmark = createAction(
-  '[Bookmark/API] Add Bookmark',
+  '[Bookmark Add Component] Add Bookmark',
+  props<{ name: string; link: string; userId: string }>()
+);
+export const addBookmarkSuccess = createAction(
+  '[Bookmark Effect] Add Bookmark Success',
   props<{ bookmark: Bookmark }>()
 );
-
-export const upsertBookmark = createAction(
-  '[Bookmark/API] Upsert Bookmark',
-  props<{ bookmark: Bookmark }>()
+export const addBookmarkFailure = createAction(
+  '[Bookmark Effect] Add Bookmark Failure',
+  props<{ error: any }>()
 );
 
-export const addBookmarks = createAction(
-  '[Bookmark/API] Add Bookmarks',
-  props<{ bookmarks: Bookmark[] }>()
-);
-
-export const upsertBookmarks = createAction(
-  '[Bookmark/API] Upsert Bookmarks',
-  props<{ bookmarks: Bookmark[] }>()
-);
-
-export const updateBookmark = createAction(
-  '[Bookmark/API] Update Bookmark',
-  props<{ bookmark: Update<Bookmark> }>()
-);
-
-export const updateBookmarks = createAction(
-  '[Bookmark/API] Update Bookmarks',
-  props<{ bookmarks: Update<Bookmark>[] }>()
-);
-
+//Delete
 export const deleteBookmark = createAction(
-  '[Bookmark/API] Delete Bookmark',
+  '[Bookmark Component] Delete Bookmark',
   props<{ id: string }>()
 );
-
-export const deleteBookmarks = createAction(
-  '[Bookmark/API] Delete Bookmarks',
-  props<{ ids: string[] }>()
+export const deleteBookmarkSuccess = createAction(
+  '[Bookmark Effect] Delete Bookmark Effect'
 );
-*/
+export const deleteBookmarkFailure = createAction(
+  '[Bookmark Effect] Delete Bookmark Failure',
+  props<{ error: any }>()
+);
+
 export const clearBookmarks = createAction('[Bookmark/API] Clear Bookmarks');

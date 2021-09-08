@@ -6,13 +6,17 @@ import {
   Param,
   Patch,
   Delete,
+  Logger,
 } from '@nestjs/common';
 
 import { TodosService } from './todos.service';
 
 @Controller('todos')
 export class TodosController {
-  constructor(private readonly todosService: TodosService) {}
+  constructor(
+    private readonly todosService: TodosService,
+    private logger: Logger,
+  ) {}
 
   @Post()
   async addTodo(
@@ -49,14 +53,17 @@ export class TodosController {
   @Patch(':id')
   async updateTodo(
     @Param('id') todoId: string,
-    @Body('text') todoText: string,
+    @Body('task') todoTask: string,
     @Body('status') todoStatus: boolean,
     @Body('dateAdded') todoDateAdded: string,
     @Body('userId') todoUserId: string,
   ) {
+    this.logger.verbose(
+      `Updating Todo with parameters: ${todoId},${todoTask},${todoStatus},${todoDateAdded},${todoUserId}`,
+    );
     await this.todosService.updateTodo(
       todoId,
-      todoText,
+      todoTask,
       todoStatus,
       todoDateAdded,
       todoUserId,

@@ -21,7 +21,16 @@ export class TodosService {
       userId,
     });
     const result = await newTodo.save();
-    return { statusCode: 200, todo: result };
+    return {
+      statusCode: 200,
+      todo: {
+        id: result.id,
+        task: result.task,
+        status: result.status,
+        dateAdded: result.dateAdded,
+        userId: result.userId,
+      },
+    };
   }
 
   async getTodos() {
@@ -73,7 +82,7 @@ export class TodosService {
     userId: string,
   ) {
     const updatedTodo = (await this.findTodo(todoId)).todo;
-
+    console.log(updatedTodo);
     if (task) {
       updatedTodo.task = task;
     }
@@ -81,14 +90,14 @@ export class TodosService {
     if (dateAdded) {
       updatedTodo.dateAdded = dateAdded;
     }
-    if (status) {
+    if (status !== undefined) {
       updatedTodo.status = status;
     }
 
     if (userId) {
       updatedTodo.userId = userId;
     }
-
+    console.log(updatedTodo);
     updatedTodo.save();
   }
 

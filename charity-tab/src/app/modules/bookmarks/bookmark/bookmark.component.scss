@@ -26,6 +26,7 @@
   padding: 10px;
   user-select: none;
 }
+
 .svgClass {
   display: inline-block;
   color: rgb(33, 33, 33);
@@ -40,4 +41,30 @@
   right: 2px;
   opacity: 0;
   pointer-events: none;
+}
+
+button {
+  background-color: transparent;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+
+  border: none;
+}
+fa-icon {
+  color: white;
+  opacity: 0.5;
+  font-size: larger;
+  width: 32px;
+  height: 32px;
+  transition: opacity 0.2s linear;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -ms-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+}
+fa-icon:hover {
+  opacity: 1;
 }

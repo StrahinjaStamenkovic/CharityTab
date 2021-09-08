@@ -3,51 +3,45 @@ import { Update } from '@ngrx/entity';
 
 import { Note } from './note.model';
 
+//Load Notes
 export const loadNotes = createAction(
-  '[Note/API] Load Notes', 
+  '[Note-List Component] Load All Notes',
+  props<{ userId: string }>()
+);
+export const loadNotesSuccess = createAction(
+  '[Note-List Effect] Load All Notes Success',
   props<{ notes: Note[] }>()
 );
+export const loadNotesFailure = createAction(
+  '[Note-List Effect] Load All Notes Failure',
+  props<{ error: any }>()
+);
 
+//Add Notes
 export const addNote = createAction(
-  '[Note/API] Add Note',
+  '[Note Add Component] Add Note',
+  props<{ text: string; userId: string }>()
+);
+export const addNoteSuccess = createAction(
+  '[Note Effect] Add Note Success',
   props<{ note: Note }>()
 );
-
-export const upsertNote = createAction(
-  '[Note/API] Upsert Note',
-  props<{ note: Note }>()
+export const addNoteFailure = createAction(
+  '[Note Effect] Add Note Failure',
+  props<{ error: any }>()
 );
 
-export const addNotes = createAction(
-  '[Note/API] Add Notes',
-  props<{ notes: Note[] }>()
-);
-
-export const upsertNotes = createAction(
-  '[Note/API] Upsert Notes',
-  props<{ notes: Note[] }>()
-);
-
-export const updateNote = createAction(
-  '[Note/API] Update Note',
-  props<{ note: Update<Note> }>()
-);
-
-export const updateNotes = createAction(
-  '[Note/API] Update Notes',
-  props<{ notes: Update<Note>[] }>()
-);
-
+//Delete
 export const deleteNote = createAction(
-  '[Note/API] Delete Note',
+  '[Note Component] Delete Note',
   props<{ id: string }>()
 );
-
-export const deleteNotes = createAction(
-  '[Note/API] Delete Notes',
-  props<{ ids: string[] }>()
+export const deleteNoteSuccess = createAction(
+  '[Note Effect] Delete Note Effect'
+);
+export const deleteNoteFailure = createAction(
+  '[Note Effect] Delete Note Failure',
+  props<{ error: any }>()
 );
 
-export const clearNotes = createAction(
-  '[Note/API] Clear Notes'
-);
+export const clearNotes = createAction('[Note/API] Clear Notes');

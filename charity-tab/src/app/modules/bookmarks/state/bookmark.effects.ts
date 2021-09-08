@@ -24,6 +24,40 @@ export class BookmarkEffects {
     );
   });
 
+  //Add Bookmarks API Effect
+  addBookmarks$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(BookmarkActions.addBookmark),
+      mergeMap((action) =>
+        this.bookmarkService
+          .createBookmark(action.name, action.link, action.userId)
+          .pipe(
+            map((data) =>
+              BookmarkActions.addBookmarkSuccess({ bookmark: data.bookmark })
+            ),
+            catchError((error) =>
+              of(BookmarkActions.addBookmarkFailure({ error }))
+            )
+          )
+      )
+    );
+  });
+
+  //Delete Bookmarks API Effect
+  deleteBookmarks$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(BookmarkActions.deleteBookmark),
+      mergeMap((action) =>
+        this.bookmarkService.deleteBookmark(action.id).pipe(
+          map(() => BookmarkActions.deleteBookmarkSuccess()),
+          catchError((error) =>
+            of(BookmarkActions.deleteBookmarkFailure({ error }))
+          )
+        )
+      )
+    );
+  });
+
   constructor(
     private actions$: Actions,
     private bookmarkService: BookmarkService

@@ -3,51 +3,59 @@ import { Update } from '@ngrx/entity';
 
 import { Todo } from './todo.model';
 
+//Load Todos
 export const loadTodos = createAction(
-  '[Todo/API] Load Todos', 
+  '[Todo-List Component] Load All Todos',
+  props<{ userId: string }>()
+);
+export const loadTodosSuccess = createAction(
+  '[Todo-List Effect] Load All Todos Success',
   props<{ todos: Todo[] }>()
 );
+export const loadTodosFailure = createAction(
+  '[Todo-List Effect] Load All Todos Failure',
+  props<{ error: any }>()
+);
 
+//Add Todos
 export const addTodo = createAction(
-  '[Todo/API] Add Todo',
+  '[Todo Add Component] Add Todo',
+  props<{ task: string; userId: string }>()
+);
+export const addTodoSuccess = createAction(
+  '[Todo Effect] Add Todo Success',
   props<{ todo: Todo }>()
 );
+export const addTodoFailure = createAction(
+  '[Todo Effect] Add Todo Failure',
+  props<{ error: any }>()
+);
 
+//Update/Upsert todo
 export const upsertTodo = createAction(
-  '[Todo/API] Upsert Todo',
+  '[Todo Component] Upsert Todo',
   props<{ todo: Todo }>()
 );
-
-export const addTodos = createAction(
-  '[Todo/API] Add Todos',
-  props<{ todos: Todo[] }>()
+export const upsertTodoSuccess = createAction(
+  '[Todo Effect] Upsert Todo Success',
+  props<{ todo: Todo }>()
+);
+export const upsertTodoFailure = createAction(
+  '[Todo Effect] Upsert Todo Failure',
+  props<{ error: any }>()
 );
 
-export const upsertTodos = createAction(
-  '[Todo/API] Upsert Todos',
-  props<{ todos: Todo[] }>()
-);
-
-export const updateTodo = createAction(
-  '[Todo/API] Update Todo',
-  props<{ todo: Update<Todo> }>()
-);
-
-export const updateTodos = createAction(
-  '[Todo/API] Update Todos',
-  props<{ todos: Update<Todo>[] }>()
-);
-
+//Delete
 export const deleteTodo = createAction(
-  '[Todo/API] Delete Todo',
+  '[Todo Component] Delete Todo',
   props<{ id: string }>()
 );
-
-export const deleteTodos = createAction(
-  '[Todo/API] Delete Todos',
-  props<{ ids: string[] }>()
+export const deleteTodoSuccess = createAction(
+  '[Todo Effect] Delete Todo Effect'
+);
+export const deleteTodoFailure = createAction(
+  '[Todo Effect] Delete Todo Failure',
+  props<{ error: any }>()
 );
 
-export const clearTodos = createAction(
-  '[Todo/API] Clear Todos'
-);
+export const clearTodos = createAction('[Todo/API] Clear Todos');

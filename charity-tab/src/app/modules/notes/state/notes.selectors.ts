@@ -1,9 +1,11 @@
-import { createSelector } from '@ngrx/store';
-import { Note } from 'src/app/modules/notes/state/note.model';
-import { selectAuthState } from '../../auth/state/auth.selectors';
-import * as fromAuth from '../../auth/state/auth.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import * as NoteReducer from './note.reducer';
 
-export const selectNotes = createSelector(
-  selectAuthState,
-  (state: fromAuth.State): Note[] => [] //state.user.notes
+export const selectNotesState = createFeatureSelector<NoteReducer.State>(
+  NoteReducer.notesFeatureKey
+);
+
+export const selectAllNotes = createSelector(
+  selectNotesState,
+  NoteReducer.selectAll
 );

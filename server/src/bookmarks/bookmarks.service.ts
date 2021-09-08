@@ -23,7 +23,16 @@ export class BookmarksService {
       userId,
     });
     const result = await newBookmark.save();
-    return { statusCode: 200, bookmark: result };
+    return {
+      statusCode: 200,
+      bookmark: {
+        id: result.id,
+        name: result.name,
+        link: result.link,
+        dateAdded: result.dateAdded,
+        userId: result.userId,
+      },
+    };
   }
 
   async getBookmarks() {

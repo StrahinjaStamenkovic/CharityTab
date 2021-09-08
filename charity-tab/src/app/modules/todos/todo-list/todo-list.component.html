@@ -1,5 +1,5 @@
 <div class="container-fluid p-0" *ngIf="todo$ | async as todos">
-  <div class="todos-tab px-2">
+  <div class="todos-tab px-2" [ngClass]="{ expanded: inputVisibility }">
     <div
       class="
         todos-control
@@ -45,7 +45,9 @@
     </div>
   </div>
 
-  <div *ngFor="let todo of todos" class="mx-2">
-    <app-todo [todo]="todo"></app-todo>
+  <div class="todo-list" class="mx-2">
+    <div *ngFor="let todo of todos" class="m-2">
+      <app-todo [todo]="todo"></app-todo>
+    </div>
   </div>
 </div>

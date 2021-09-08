@@ -1,1 +1,28 @@
-<p>todo works!</p>
+<span
+  *ngIf="todo"
+  class="
+    todo-container
+    d-flex
+    flex-row
+    justify-content-between
+    align-items-center
+    p-1
+    pr-2
+  "
+>
+  <div>
+    <input
+      type="checkbox"
+      (click)="changeStatus()"
+      class="form-check-input"
+      [checked]="todo.status"
+    />
+    <div class="task" [ngClass]="{ strikethrough: todo.status }">
+      {{ todo.task }}
+    </div>
+  </div>
+
+  <button class="deleteButton p-0" (click)="delete()">
+    <fa-icon [icon]="faDeleteIcon" class="circleDelete"></fa-icon>
+  </button>
+</span>

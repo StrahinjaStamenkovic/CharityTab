@@ -1,9 +1,11 @@
-import { createSelector } from '@ngrx/store';
-import { Todo } from 'src/app/modules/todos/state/todo.model';
-import { selectAuthState } from '../../auth/state/auth.selectors';
-import * as fromAuth from '../../auth/state/auth.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import * as TodoReducer from './todo.reducer';
 
-export const selectToDos = createSelector(
-  selectAuthState,
-  (state: fromAuth.State): Todo[] => [] //state.user.toDo
+export const selectTodosState = createFeatureSelector<TodoReducer.State>(
+  TodoReducer.todosFeatureKey
+);
+
+export const selectAllTodos = createSelector(
+  selectTodosState,
+  TodoReducer.selectAll
 );

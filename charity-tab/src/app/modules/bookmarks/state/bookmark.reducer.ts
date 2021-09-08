@@ -21,49 +21,35 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
+  //Load
   on(BookmarkActions.loadBookmarks, (state, action) => ({
     ...state,
-    userId: state.userId,
+    userId: action.userId,
   })),
   on(BookmarkActions.loadBookmarksSuccess, (state, action) =>
     adapter.setAll(action.bookmarks, state)
   ),
-  on(BookmarkActions.loadBookmarksFailure, (state, action) => ({
-    ...state,
-    error: action.error,
-  }))
-  /*
-  on(BookmarkActions.addBookmark,
-    (state, action) => adapter.addOne(action.bookmark, state)
+
+  //Add
+  on(BookmarkActions.addBookmarkSuccess, (state, action) =>
+    adapter.addOne(action.bookmark, state)
   ),
-  on(BookmarkActions.upsertBookmark,
-    (state, action) => adapter.upsertOne(action.bookmark, state)
+
+  //Delete
+  on(BookmarkActions.deleteBookmark, (state, action) =>
+    adapter.removeOne(action.id, state)
   ),
-  on(BookmarkActions.addBookmarks,
-    (state, action) => adapter.addMany(action.bookmarks, state)
-  ),
-  on(BookmarkActions.upsertBookmarks,
-    (state, action) => adapter.upsertMany(action.bookmarks, state)
-  ),
-  on(BookmarkActions.updateBookmark,
-    (state, action) => adapter.updateOne(action.bookmark, state)
-  ),
-  on(BookmarkActions.updateBookmarks,
-    (state, action) => adapter.updateMany(action.bookmarks, state)
-  ),
-  on(BookmarkActions.deleteBookmark,
-    (state, action) => adapter.removeOne(action.id, state)
-  ),
-  on(BookmarkActions.deleteBookmarks,
-    (state, action) => adapter.removeMany(action.ids, state)
-  ),
-  on(BookmarkActions.loadBookmarks,
-    (state, action) => adapter.setAll(action.bookmarks, state)
-  ),
-  on(BookmarkActions.clearBookmarks,
-    state => adapter.removeAll(state)
-  ),
-  */
+
+  //Error
+  on(
+    BookmarkActions.loadBookmarksFailure,
+    BookmarkActions.addBookmarkFailure,
+    BookmarkActions.deleteBookmarkFailure,
+    (state, action) => ({
+      ...state,
+      error: action.error,
+    })
+  )
 );
 
 export const { selectIds, selectEntities, selectAll, selectTotal } =

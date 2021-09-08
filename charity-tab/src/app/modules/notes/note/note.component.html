@@ -1,1 +1,11 @@
-<p>note works!</p>
+<span *ngIf="note" class="note-container d-flex flex-column p-2">
+  <div class="d-flex justify-content-between">
+    <p class="date pt-1">{{ note.dateAdded }}</p>
+    <button class="deleteButton p-0 align-self-start" (click)="delete()">
+      <fa-icon [icon]="faDeleteIcon" class="circleDelete"></fa-icon>
+    </button>
+  </div>
+  <div class="text">
+    {{ note.text }}
+  </div>
+</span>

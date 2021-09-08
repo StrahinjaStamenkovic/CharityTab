@@ -15,7 +15,15 @@ export class NotesService {
       userId,
     });
     const result = await newNote.save();
-    return { statusCode: 200, note: result };
+    return {
+      statusCode: 200,
+      note: {
+        id: result.id,
+        text: result.text,
+        dateAdded: result.dateAdded,
+        userId: result.userId,
+      },
+    };
   }
 
   async getNotes() {

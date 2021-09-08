@@ -2,19 +2,22 @@
   background-color: #9d4ba3;
   border-radius: 2px;
   color: white;
-  max-width: 340px;
-  transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
+  max-width: 96px;
+  transition: hover 0.5s linear;
+  -webkit-transition: hover 0.5s linear;
+  -moz-transition: hover 0.5s linear;
+  -ms-transition: hover 0.5s linear;
+  -o-transition: hover 0.5s linear;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
 }
 .notes-control {
-  width: 120px;
+  width: 80px;
+}
+.expanded {
+  max-width: 340px;
 }
 button {
   background-color: transparent;
@@ -44,4 +47,9 @@ fa-icon:hover {
 .input-form {
   width: 320px;
   height: 80px;
+}
+
+.note-list {
+  overflow: auto;
+  max-height: 600px;
 }

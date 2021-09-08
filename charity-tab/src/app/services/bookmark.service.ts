@@ -12,20 +12,23 @@ import { Observable } from 'rxjs';
 export class BookmarkService {
   constructor(private httpClient: HttpClient) {}
 
-  createBookmark(name: string, link: string) {
+  createBookmark(
+    name: string,
+    link: string,
+    userId: string
+  ): Observable<{ statusCode: number; bookmark: Bookmark }> {
     const dateAdded: string = `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`;
-    const userId = (<User>JSON.parse(<string>localStorage.getItem('user'))).id;
     console.log(dateAdded, userId);
-    this.httpClient
-      .post(`${environment.apiUrl}/bookmarks`, {
+
+    return this.httpClient.post<{ statusCode: number; bookmark: Bookmark }>(
+      `${environment.apiUrl}/bookmarks`,
+      {
         name,
         link,
         dateAdded,
         userId,
-      })
-      .subscribe((response) => {
-        console.log(response);
-      });
+      }
+    );
   }
 
   getAllForUser(userId: string): Observable<Bookmark[]> {
@@ -35,5 +38,9 @@ export class BookmarkService {
       )
       .pipe(map((response) => response.bookmarks));
     //.pipe(catchError(this.handleError));
+  }
+
+  deleteBookmark(id: string) {
+    return this.httpClient.delete(`${environment.apiUrl}/bookmarks/${id}`);
   }
 }

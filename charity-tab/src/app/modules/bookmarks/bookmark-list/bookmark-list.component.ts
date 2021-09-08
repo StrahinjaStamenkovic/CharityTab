@@ -6,8 +6,7 @@ import {
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { select, Store } from '@ngrx/store';
-import { fromEvent, Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Bookmark } from 'src/app/modules/bookmarks/state/bookmark.model';
 import { BookmarkService } from 'src/app/services/bookmark.service';
 import { AppState } from 'src/app/store';
@@ -30,20 +29,22 @@ export class BookmarkListComponent implements OnInit {
   controlVisibility: boolean = true;
   inputVisibility: boolean = false;
 
-  userId$!: Observable<string | null>;
+  userId!: string | null;
   constructor(
     private store: Store<AppState>,
     private bookmarkService: BookmarkService
   ) {}
 
   ngOnInit(): void {
-    this.userId$ = this.store.pipe(select(selectUserId));
+    this.store
+      .pipe(select(selectUserId))
+      .subscribe((userId) => (this.userId = userId));
 
     //Dispatch an action to load all bookmarks for a given userId
-    this.userId$.subscribe((userId) => {
-      if (userId)
-        this.store.dispatch(fromBookmarkActions.loadBookmarks({ userId }));
-    });
+    if (this.userId)
+      this.store.dispatch(
+        fromBookmarkActions.loadBookmarks({ userId: this.userId })
+      );
 
     this.bookmark$ = this.store.pipe(
       select(fromBookmarksSelector.selectAllBookmarks)
@@ -53,12 +54,18 @@ export class BookmarkListComponent implements OnInit {
   toggleForm() {
     this.controlVisibility = !this.controlVisibility;
     this.inputVisibility = !this.inputVisibility;
-    //console.log(this.controlVisibility, this.inputVisibility);
   }
 
   onSubmit(f: NgForm) {
     console.log(f.value.name, f.value.url);
     this.toggleForm();
-    this.bookmarkService.createBookmark(f.value.name, f.value.url);
+    if (this.userId)
+      this.store.dispatch(
+        fromBookmarkActions.addBookmark({
+          name: f.value.name,
+          link: f.value.url,
+          userId: this.userId,
+        })
+      );
   }
 }
